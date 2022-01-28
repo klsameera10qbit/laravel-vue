@@ -3,15 +3,21 @@
         <h4 class="text-center">Edit product</h4>
         <div class="row">
             <div class="col-md-6">
-                <form @submit.prevent="updateproduct">
+                <form @submit.prevent="updateProduct">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" v-model="product.name">
-                    </div><br>
+                        <label>Title</label>
+                        <input type="text" class="form-control" v-model="product.title">
+                    </div>
+                    <br>
                     <div class="form-group">
-                        <label>Author</label>
-                        <input type="text" class="form-control" v-model="product.author">
-                    </div><br>
+                        <label>Price</label>
+                        <input type="text" class="form-control" v-model="product.price">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" class="form-control" v-model="product.description">
+                    </div>
                     <button type="submit" class="btn btn-primary">Update product</button>
                 </form>
             </div>
@@ -30,7 +36,8 @@ export default {
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
             this.$axios.get(`/api/products/${this.$route.params.id}`)
                 .then(response => {
-                    this.product = response.data;
+                    this.product = response.data.data;
+                    
                 })
                 .catch(function (error) {
                     console.error(error);
@@ -38,7 +45,7 @@ export default {
         })
     },
     methods: {
-        updateproduct() {
+        updateProduct() {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
                 this.$axios.put(`/api/products/${this.$route.params.id}`, this.product)
                     .then(response => {
