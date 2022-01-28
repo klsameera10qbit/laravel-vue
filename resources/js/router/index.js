@@ -6,9 +6,9 @@ import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 
-import Books from '../components/Books';
-import AddBook from '../components/AddBook';
-import EditBook from '../components/EditBook';
+import products from '../components/Products';
+import Addproduct from '../components/AddProduct';
+import Editproduct from '../components/EditProduct';
 
 export const routes = [
     {
@@ -37,19 +37,19 @@ export const routes = [
         component: Dashboard
     },
     {
-        name: 'books',
-        path: '/books',
-        component: Books
+        name: 'products',
+        path: '/products',
+        component: products
     },
     {
-        name: 'addbook',
-        path: '/books/add',
-        component: AddBook
+        name: 'addproduct',
+        path: '/products/add',
+        component: Addproduct
     },
     {
-        name: 'editbook',
-        path: '/books/edit/:id',
-        component: EditBook
+        name: 'editproduct',
+        path: '/products/edit/:id',
+        component: Editproduct
     },
 ];
 

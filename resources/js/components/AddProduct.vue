@@ -3,15 +3,22 @@
         <h4 class="text-center">Add product</h4>
         <div class="row">
             <div class="col-md-6">
-                <form @submit.prevent="addproduct">
+                <form @submit.prevent="addProduct">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" v-model="product.name">
-                    </div><br>
+                        <label>Title</label>
+                        <input type="text" class="form-control" v-model="product.title">
+                    </div>
+                    <br>
                     <div class="form-group">
-                        <label>Author</label>
-                        <input type="text" class="form-control" v-model="product.author">
-                    </div><br>
+                        <label>Price</label>
+                        <input type="text" class="form-control" v-model="product.price">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" class="form-control" v-model="product.description">
+                    </div>
+                    <br>
                     <button type="submit" class="btn btn-primary">Add product</button>
                 </form>
             </div>
@@ -27,7 +34,7 @@ export default {
         }
     },
     methods: {
-        addproduct() {
+        addProduct() {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
                 this.$axios.post('/api/products', this.product)
                     .then(response => {

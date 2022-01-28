@@ -5,8 +5,8 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Author</th>
+                <th>Title</th>
+                <th>Price</th>
                 <th>Created At</th>
                 <th>Updated At</th>
                 <th>Actions</th>
@@ -15,8 +15,8 @@
             <tbody>
             <tr v-for="product in products" :key="product.id">
                 <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.author }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
                 <td>{{ product.created_at }}</td>
                 <td>{{ product.updated_at }}</td>
                 <td>
@@ -45,7 +45,8 @@ export default {
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
             this.$axios.get('/api/products')
                 .then(response => {
-                    this.products = response.data;
+                    this.products = response.data.data;
+                    console.log(this.products);
                 })
                 .catch(function (error) {
                     console.error(error);
