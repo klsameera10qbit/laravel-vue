@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <div class="d-flex">
             <h4 class="p-2 flex-grow-1 bd-highlight text-center">
                 All products
@@ -31,8 +31,8 @@
                         <td>{{ product.id }}</td>
                         <td>{{ product.title }}</td>
                         <td>{{ product.price }}</td>
-                        <td>{{ dateTime(product.created_at) }}</td>
-                        <td>{{ dateTime(product.updated_at) }}</td>
+                        <td>{{ product.created_at }}</td>
+                        <td>{{ product.updated_at }}</td>
                         <td>
                             <div class="btn-group" role="group">
                                 <router-link
@@ -73,7 +73,11 @@ export default {
             this.$axios
                 .get("/api/products")
                 .then((response) => {
-                    this.products = response.data.data;
+                    this.products = response.data.data.map((n) => {
+                        n.updated_at = moment(response.data.data.updated_at).utc().format('YYYY/MM/DD');
+                        n.created_at = moment(response.data.data.created_at).utc().format('YYYY/MM/DD');
+                        return n;
+                    });
                     console.log(this.products);
                 })
                 .catch(function (error) {
@@ -105,15 +109,5 @@ export default {
         next();
     },
 
-    dateTime(value) {
-      return moment(value).format('YYYY-MM-DD');
-    },
-
-
-// const data = await this.$axios.$get('/api/admin/big-questions')
-//         this.questions = data.data.map((n) => {
-//           n.updated_at = moment(data.data.updated_at).utc().format('YYYY/MM/DD');
-//           return n;
-//         });
 };
 </script>
