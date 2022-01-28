@@ -19626,7 +19626,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    deleteproduct: function deleteproduct(id) {
+    deleteProduct: function deleteProduct(id) {
       var _this2 = this;
 
       this.$axios.get('/sanctum/csrf-cookie').then(function (response) {
@@ -20252,7 +20252,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
-        name: 'editproduct',
+        name: 'editProduct',
         params: {
           id: product.id
         }
@@ -20270,7 +20270,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       "class": "btn btn-danger",
       onClick: function onClick($event) {
-        return $options.deleteproduct(product.id);
+        return $options.deleteProduct(product.id);
       }
     }, "Delete", 8
     /* PROPS */
@@ -20733,11 +20733,11 @@ var routes = [{
   path: '/products',
   component: _components_Products__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
-  name: 'addproduct',
+  name: 'addProduct',
   path: '/products/add',
   component: _components_AddProduct__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
-  name: 'editproduct',
+  name: 'editProduct',
   path: '/products/edit/:id',
   component: _components_EditProduct__WEBPACK_IMPORTED_MODULE_7__["default"]
 }];

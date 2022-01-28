@@ -7,8 +7,8 @@ import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 
 import products from '../components/Products';
-import Addproduct from '../components/AddProduct';
-import Editproduct from '../components/EditProduct';
+import AddProduct from '../components/AddProduct';
+import EditProduct from '../components/EditProduct';
 
 export const routes = [
     {
@@ -42,14 +42,14 @@ export const routes = [
         component: products
     },
     {
-        name: 'addproduct',
+        name: 'addProduct',
         path: '/products/add',
-        component: Addproduct
+        component: AddProduct
     },
     {
-        name: 'editproduct',
+        name: 'editProduct',
         path: '/products/edit/:id',
-        component: Editproduct
+        component: EditProduct
     },
 ];
 

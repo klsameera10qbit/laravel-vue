@@ -21,9 +21,9 @@
                 <td>{{ product.updated_at }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editproduct', params: { id: product.id }}" class="btn btn-primary">Edit
+                        <router-link :to="{name: 'editProduct', params: { id: product.id }}" class="btn btn-primary">Edit
                         </router-link>
-                        <button class="btn btn-danger" @click="deleteproduct(product.id)">Delete</button>
+                        <button class="btn btn-danger" @click="deleteProduct(product.id)">Delete</button>
                     </div>
                 </td>
             </tr>
@@ -54,7 +54,7 @@ export default {
         })
     },
     methods: {
-        deleteproduct(id) {
+        deleteProduct(id) {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
                 this.$axios.delete(`/api/products/${id}`)
                     .then(response => {
