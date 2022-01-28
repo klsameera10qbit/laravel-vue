@@ -1,18 +1,18 @@
 <template>
     <div>
-        <h4 class="text-center">Add Book</h4>
+        <h4 class="text-center">Add product</h4>
         <div class="row">
             <div class="col-md-6">
-                <form @submit.prevent="addBook">
+                <form @submit.prevent="addproduct">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" v-model="book.name">
+                        <input type="text" class="form-control" v-model="product.name">
                     </div><br>
                     <div class="form-group">
                         <label>Author</label>
-                        <input type="text" class="form-control" v-model="book.author">
+                        <input type="text" class="form-control" v-model="product.author">
                     </div><br>
-                    <button type="submit" class="btn btn-primary">Add Book</button>
+                    <button type="submit" class="btn btn-primary">Add product</button>
                 </form>
             </div>
         </div>
@@ -23,15 +23,15 @@
 export default {
     data() {
         return {
-            book: {}
+            product: {}
         }
     },
     methods: {
-        addBook() {
+        addproduct() {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.post('/api/books/add', this.book)
+                this.$axios.post('/api/products', this.product)
                     .then(response => {
-                        this.$router.push({name: 'books'})
+                        this.$router.push({name: 'products'})
                     })
                     .catch(function (error) {
                         console.error(error);
